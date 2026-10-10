@@ -15,7 +15,7 @@
 
 ## Скриншоты
 
-(screenshots/Screenshots.png)
+![Скриншоты](screenshots/Screenshots.png)
 
 ## Установка из исходников
 
