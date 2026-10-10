@@ -15,8 +15,7 @@
 
 ## Скриншоты
 
-![Главное окно расширения](screenshots/Screenshots.png)
-
+(screenshots/Screenshots.png)
 
 ## Установка из исходников
 
