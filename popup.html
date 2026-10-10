@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ссылка на папку Диска</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <button id="copy-btn" class="primary">
+    Скопировать ссылку
+  </button>
+
+  <button id="add-root-btn" class="secondary">
+    📌 Запомнить корень
+  </button>
+
+  <p class="hint">
+    Откройте опубликованную папку (например, <b>Renders</b>) и один раз
+    нажмите «Запомнить корень». После этого ссылки на подпапки копируются
+    автоматически.
+  </p>
+
+ <div class="hotkey-hint">
+  <div>
+    <kbd>Ctrl+Shift+Y</kbd>
+    <span>— копировать</span>
+  </div>
+
+  <div>
+    <kbd>Ctrl+Shift+O</kbd>
+    <span>— открыть + копировать</span>
+  </div>
+</div>
+
+
+<h2>Настройки</h2>
+
+<label class="setting-row">
+  <input id="auto-close-toggle" type="checkbox" />
+  <span>Автозакрытие плашки через 10 сек</span>
+</label>
+
+  <div id="promo-slider" class="promo-slider">
+    <div class="promo-track">
+      <img
+        class="promo-slide active"
+        src="banners/support-banner.png"
+        alt="Угостить автора кофе"
+        data-action="support"
+      />
+
+      <img
+        class="promo-slide"
+        src="banners/feedback-banner.png"
+        alt="Есть идея или нашёл баг?"
+        data-action="feedback"
+      />
+
+      <div class="promo-dots">
+        <button class="promo-dot active" type="button" data-slide="0" aria-label="Слайд 1"></button>
+        <button class="promo-dot" type="button" data-slide="1" aria-label="Слайд 2"></button>
+      </div>
+    </div>
+  </div>
+
+  <h2>Сохранённые корни</h2>
+  <ul id="roots-list"></ul>
+  <p id="empty-hint" class="hint">
+    Пока нет сохранённых папок.
+  </p>
+
+  <!-- Модальное окно поддержки -->
+
+<div id="support-modal" class="support-modal">
+  <div class="support-overlay"></div>
+
+  <div class="support-window">
+    <button
+      id="support-close"
+      class="support-close"
+      type="button"
+      aria-label="Закрыть"
+    >
+      ×
+    </button>
+
+    <img
+      id="support-qr"
+      class="support-qr"
+      src="banners/QR-banner.png"
+      alt="QR-код для поддержки автора"
+    />
+  </div>
+</div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

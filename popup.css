@@ -1,0 +1,480 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 280px;
+  margin: 0;
+  padding: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  color: #222;
+  background: #fff;
+}
+
+button {
+  font-family: inherit;
+}
+
+button.primary,
+button.secondary {
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 650;
+  transition: transform 0.1s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+button.primary {
+  padding: 10px 10px;
+  border: none;
+  background: #ffdb4d;
+  color: #1d1d1d;
+  font-size: 13px;
+}
+
+button.primary:hover {
+  background: #ffd11a;
+}
+
+button.primary:active {
+  transform: scale(0.98);
+}
+
+button.primary.copied {
+  background: #dcefdc;
+  color: #1e7d1e;
+}
+
+button.secondary {
+  margin-top: 7px;
+  padding: 8px 10px;
+  border: 1px solid #d8d8d8;
+  background: #f4f4f4;
+  color: #333;
+  font-size: 12px;
+}
+
+button.secondary:hover {
+  background: #e9e9e9;
+}
+
+button.secondary:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.75;
+}
+
+.hint {
+  margin: 10px 0 0;
+  color: #6b6b6b;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.hotkey-hint {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 9px 0 0;
+  color: #6b6b6b;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.hotkey-hint > div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+kbd {
+  display: inline-block;
+  padding: 1px 4px;
+  border: 1px solid #d5d5d5;
+  border-radius: 4px;
+  background: #f1f1f1;
+  color: #555;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10px;
+}
+
+h2 {
+  margin: 13px 0 5px;
+  font-size: 12px;
+  color: #444;
+}
+
+#roots-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#roots-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  padding: 6px 0;
+  border-bottom: 1px solid #efefef;
+}
+
+.root-info {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.root-label {
+  overflow: hidden;
+  color: #333;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.root-url {
+  overflow: hidden;
+  margin-top: 2px;
+  color: #888;
+  font-size: 10px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.delete-btn {
+  flex-shrink: 0;
+  padding: 3px 5px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: #b33;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.delete-btn:hover {
+  background: #fff0f0;
+}
+
+.root-label-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.root-label-row .root-label {
+  flex: 1;
+  min-width: 0;
+}
+
+.edit-btn {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: #888;
+  font-size: 17px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.rename-input {
+  width: 100%;
+  min-width: 0;
+  height: 26px;
+  padding: 3px 6px;
+  border: 1px solid #ffcc00;
+  border-radius: 5px;
+  outline: none;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+}
+
+.rename-controls {
+  display: flex;
+  flex-shrink: 0;
+  gap: 2px;
+}
+
+.rename-save-btn,
+.rename-cancel-btn {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.rename-save-btn {
+  background: #dcefdc;
+  color: #1e7d1e;
+}
+
+.rename-save-btn:hover {
+  background: #c9e7c9;
+}
+
+.rename-cancel-btn {
+  background: #f7eeee;
+  color: #a33;
+}
+
+.rename-cancel-btn:hover {
+  background: #f1dcdc;
+}
+
+.root-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.open-btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #2f8a45;
+  font-size: 17px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.open-btn:hover {
+  background: #e6f5e9;
+  color: #1e6f35;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 4px 0 10px;
+  color: #555;
+  font-size: 11px;
+  line-height: 1.3;
+  cursor: pointer;
+}
+
+.setting-row input {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: #ffcc00;
+  cursor: pointer;
+}
+
+/* ===== Слайдер поддержки ===== */
+
+.promo-slider {
+  width: 100%;
+  margin-top: 12px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.promo-track {
+  position: relative;
+  width: 100%;
+  height: 70px;
+}
+
+.promo-slide {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  user-select: none;
+}
+
+.promo-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.promo-slide:hover {
+  opacity: 0.92;
+}
+
+/* Точки поверх баннера */
+
+.promo-dots {
+  position: absolute;
+  right: 8px;
+  bottom: 7px;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  height: 10px;
+  padding: 4px 6px;
+
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.promo-dot {
+  width: 5px;
+  height: 5px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.promo-dot.active {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+}
+
+/* ===== Модальное окно поддержки ===== */
+
+.support-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.support-modal.active {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.support-modal.closing {
+  visibility: visible;
+  pointer-events: none;
+}
+
+.support-modal.closing .support-overlay {
+  background: rgba(0, 0, 0, 0);
+}
+
+.support-modal.closing .support-window {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.support-modal.active {
+  display: flex;
+}
+
+.support-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0);
+
+  transition: background 0.25s ease;
+}
+
+.support-modal.active .support-overlay {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.support-window {
+  position: relative;
+  z-index: 1;
+
+  width: 320px;
+  max-width: calc(100vw - 24px);
+
+  border-radius: 18px;
+  overflow: hidden;
+
+  background: #fff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+
+  opacity: 0;
+  transform: scale(0.96);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.support-modal.active .support-window {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.support-qr {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.support-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+
+  width: 28px;
+  height: 28px;
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+
+  font-size: 22px;
+  line-height: 28px;
+
+  cursor: pointer;
+}
+
+.support-close:hover {
+  background: rgba(0, 0, 0, 0.65);
+}

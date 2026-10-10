@@ -1,0 +1,64 @@
+{
+  "manifest_version": 3,
+  "name": "Яндекс.Диск — публичная ссылка на текущую папку",
+  "version": "1.6",
+  "description": "Копирует публичную ссылку на текущую папку, открывает её в новой вкладке и сохраняет публичные корни Яндекс.Диска и Яндекс 360.",
+
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "clipboardRead"
+  ],
+
+  "host_permissions": [
+    "https://disk.yandex.ru/*",
+    "https://disk.yandex.com/*",
+    "https://disk.360.yandex.ru/*",
+    "https://yadi.sk/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "icons": {
+    "128": "icons/icon128.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://disk.yandex.ru/*",
+        "https://disk.yandex.com/*",
+        "https://disk.360.yandex.ru/*",
+        "https://yadi.sk/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Ссылка на текущую папку Диска"
+  },
+
+  "commands": {
+    "copy-link": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Скопировать публичную ссылку на текущую папку"
+    },
+    "open-and-copy-link": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+O",
+        "mac": "Command+Shift+O"
+      },
+      "description": "Открыть и скопировать публичную ссылку на текущую папку"
+    }
+  }
+}
